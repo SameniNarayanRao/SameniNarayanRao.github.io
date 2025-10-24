@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Child Malnutrition Prediction</title>
+</head>
+<body bgcolor=#F0F8FF>
+
+<center><img src="static\prediction2.gif" align="middle"></center>
+
+<table style="width:80%">
+    <tr>
+        <td>
+            <center>
+           <img src="static\LOGO1.jpg" align="middle" width="500" height="280">
+        </center>
+        </td>
+    <td>
+        <center>
+
+        <h1 style="font-family:verdana;font-size:150%;color:Blue;">Enter Value : </h1><br>
+         <h1 style="font-family:verdana;font-size:55%;color:Black;">(Please enter the value as 0, if Age of the Child is less than one month) </h1><br>
+
+    <form method="POST" action = "{{url_for('home')}}">
+        <b>
+            Age of the Child (in month): <input type="text", name="a", placeholder="enter a value"/><br><br>
+            Sex of the Child (m=1/f=2 ): <input type="text", name="b", placeholder="enter a value"/><br><br>                      
+            Height of the Child (in cm): <input type="text", name="c", placeholder="enter a value"/><br><br>
+            Weight of the Child (in kg): <input type="text", name="d", placeholder="enter a value"/><br><br>
+            
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+            </center>
+        </td>
+
+</tr>
+    </table>
+<br />
+<br />
+    <marquee><i> India contributes a third of the global burden of undernutrition, India accounts for more than 3 out of every 10 Stunted children in the world. India accounts for 25.5 Million children out of the 50.5 million children who are Wasted globally.
+</i></marquee>
+
+<br />
+<br />
+<br />
+ <footer>
+ <center>
+<i><h1 style="Serif:Garamond;font-size:80%;color:Black;">Please refer <a href="https://www.who.int/tools/child-growth-standards/standards/weight-for-length-height"> WHO - Child Growth Monitoring Charts/Tables </a>
+,  <a href="https://www.fantaproject.org/sites/default/files/download/Calculate-WHZ-2.6-NACS-Users-Guide-Apr2016.pdf"> Weight for Height Z-Score Chart (Children 0 to 59 Months Age) </a><i>
+<br />
+<br />
+Developed by S. Narayan Rao
+</footer>
+ 
+ 
+</body>
+</html>
