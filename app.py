@@ -11,7 +11,7 @@ def main():
     return render_template('index.html')
 
 @app.route('/predict', methods = ['POST'])
-def home():
+def index():
     Age = request.form['a']
     Sex = request.form['b']
     Height = request.form['c']
@@ -24,6 +24,7 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug = True)
+
 
 
 
