@@ -8,7 +8,7 @@ model = pickle.load(open("randomforest.pkl", "rb"))
 
 @app.route('/')
 def main():
-    return render('index.html')
+    return <a href="index.html"
 
 @app.route('/predict', methods = ['POST'])
 def index():
@@ -18,12 +18,13 @@ def index():
     Weight = request.form['d']
     array = np.array([[Age, Sex, Height, Weight]])
     pred = model.predict(array)
-    return render("result.html", data = pred)
+    return <a href="result.html">, data = pred)
 
 
 
 if __name__ == "__main__":
     app.run(debug = True)
+
 
 
 
