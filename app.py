@@ -18,10 +18,11 @@ def home():
     Weight = request.form['d']
     array = np.array([[Age, Sex, Height, Weight]])
     pred = model.predict(array)
-    return render_template("index.html", data = pred)
+    return render_template("result.html", data = pred)
 
 
 
 if __name__ == "__main__":
     app.run(debug = True)
+
 
