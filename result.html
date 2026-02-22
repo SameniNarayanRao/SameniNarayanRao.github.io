@@ -8,27 +8,27 @@
 <center>
     <h1 style="font-family:verdana;font-size:350%;"> Prediction</h1>
 
-    {%if data == 1%}
+    {%if data = 1%}
     <h1 style="font-family:verdana;font-size:250%;color:Red;"> Severe Acute Malnutrition (SAM)</h1>
     <h1 style="font-family:verdana;font-size:150%;color:Black;"> " Z Score  :  < -3 " </h1><br>
     <img src="unhappy.gif">
    
-    {%elif data == 2%}
+    {%elif data = 2%}
     <h1 style="font-family:verdana;font-size:250%;color:Orange;"> Moderate Acute Malnutrition (MAM)</h1>
     <h1 style="font-family:verdana;font-size:150%;color:Black;"> " Z Score  :  >= -3 to < -2 " </h1><br>
     <img src="unhappy.gif">
     
-    {%elif data == 3%}
+    {%elif data = 3%}
     <h1 style="font-family:verdana;font-size:250%;color:Green;"> Normal</h1>
     <h1 style="font-family:verdana;font-size:150%;color:Black;"> " Z Score  :  >= -2 to <= +2 " </h1><br>
     <img src="happy.gif">
     
-    {%elif data == 4%}
+    {%elif data = 4%}
     <h1 style="font-family:verdana;font-size:250%;color:Orange;"> Overweight</h1>
     <h1 style="font-family:verdana;font-size:150%;color:Black;"> " Z Score  :  > +2 to <= +3 " </h1><br>
     <img src="unhappy.gif">
     
-    {%elif data == 5%}
+    {%elif data = 5%}
     <h1 style="font-family:verdana;font-size:250%;color:Red;"> Obesity</h1>
     <h1 style="font-family:verdana;font-size:150%;color:Black;"> " Z Score  :  > +3 " </h1><br>
     <img src="unhappy.gif">
@@ -47,3 +47,4 @@
 </body>
 
 </html>
+
