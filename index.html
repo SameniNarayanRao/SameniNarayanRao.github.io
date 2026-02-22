@@ -242,9 +242,8 @@
             <a href="https://www.fantaproject.org/sites/default/files/download/Calculate-WHZ-2.6-NACS-Users-Guide-Apr2016.pdf">WHZ Chart</a>
         
         </p>
-        <p><strong>Developed by Narayan Rao Sameni, M & E Professional </strong></p>
-        <p> LinkedIn Profile : 
-            <a href="https://www.linkedin.com/in/narayanraosameni/</a>
+        <p><strong>Developed by Narayan Rao Sameni</strong></p> 
+            <a href="https://www.linkedin.com/in/narayanraosameni/">LinkedIn Profile</a>
     </footer>
 
     <script>
@@ -280,10 +279,10 @@
         function getStandardDeviation(height) { return 1.2; }
 
         function getNutritionStatus(whz) {
-            if (whz < -3) return {code: 1, name: 'Severe Acute Malnutrition (SAM)', range: '< -3'}; 'Seek immediate medical attention'
-            if (whz >= -3 && whz < -2) return {code: 2, name: 'Moderate Acute Malnutrition (MAM)', range: '≥ -3 to < -2'}; 'Consult a doctor to create a weight gain plan'
-            if (whz >= -2 && whz <= 2) return {code: 3, name: 'Normal', range: '≥ -2 to ≤ +2'}; 'Maintain balanced diet'
-            if (whz > 2 && whz <= 3) return {code: 4, name: 'Overweight', range: '> +2 to ≤ +3'}; 'Consult a doctor to check for metabolic markers'
+            if (whz < -3) return {code: 1, name: 'Severe Acute Malnutrition (SAM)', range: '< -3'};
+            if (whz >= -3 && whz < -2) return {code: 2, name: 'Moderate Acute Malnutrition (MAM)', range: '≥ -3 to < -2'};
+            if (whz >= -2 && whz <= 2) return {code: 3, name: 'Normal', range: '≥ -2 to ≤ +2'};
+            if (whz > 2 && whz <= 3) return {code: 4, name: 'Overweight', range: '> +2 to ≤ +3'};
             return {code: 5, name: 'Obesity', range: '> +3'};
         }
 
@@ -305,6 +304,7 @@
     </script>
 </body>
 </html>
+
 
 
 
