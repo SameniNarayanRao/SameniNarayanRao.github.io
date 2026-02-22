@@ -4,134 +4,118 @@
     <meta charset="UTF-8">
     <title>Child Malnutrition Prediction</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: linear-gradient(135deg, #F0F8FF 0%, #ADD8E6 100%);
             font-family: Verdana, sans-serif;
-            padding: 20px;
-            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+            min-height: 50vh;
         }
         .container {
-            max-width: 1000px; /* Reduced from 1200px */
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .header-img { 
-            width: 100%; 
-            height: 200px; /* Reduced from 300px - DEFAULT SIZE */
-            object-fit: cover; 
-        }
-        .logo { 
-            max-width: 100%; 
-            max-height: 250px; /* Controlled height */
-            width: auto; 
-            height: auto; 
-            display: block; 
-            margin: 15px auto; 
-        }
-        .content-table {
-            width: 100%;
-        }
-        .logo-cell {
-            width: 45%;
-            vertical-align: top;
-            padding: 20px;
-        }
-        .form-cell {
-            width: 55%;
-            vertical-align: middle;
-            padding: 20px;
+        .header-img { width: 100%; height: 300px; object-fit: cover; }
+        .logo { max-width: 500px; height: 280px; display: block; margin: 20px auto; }
+        .form-section {
+            padding: 40px;
+            text-align: center;
         }
         .form-title { 
-            font-size: 2em; /* Reduced from 2.5em */
+            font-size: 2.5em; 
             color: #1e3a8a; 
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         .form-note {
-            font-size: 1em; /* Reduced */
+            font-size: 1.1em;
             color: #374151;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-style: italic;
         }
         .form-container {
             background: linear-gradient(145deg, #ffffff, #f8fafc);
-            padding: 25px; /* Reduced padding */
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            max-width: 450px; /* Slightly smaller */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 500px;
             margin: 0 auto;
+            backdrop-filter: blur(10px);
         }
         .form-group {
-            margin-bottom: 20px; /* Reduced */
+            margin-bottom: 25px;
             text-align: left;
         }
         .form-group label {
             display: block;
             font-weight: bold;
             color: #1e40af;
-            margin-bottom: 6px;
-            font-size: 1em;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
         .form-group input {
             width: 100%;
-            padding: 12px; /* Reduced padding */
+            padding: 15px;
             border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1em;
+            border-radius: 12px;
+            font-size: 1.1em;
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
         .form-group input:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
         }
         .predict-btn {
             background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             color: white;
             border: none;
-            padding: 14px 30px; /* Reduced */
-            font-size: 1.1em;
+            padding: 18px 40px;
+            font-size: 1.3em;
             font-weight: bold;
-            border-radius: 25px;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
         .predict-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
         }
         .results {
-            margin-top: 25px;
-            padding: 25px;
-            border-radius: 15px;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
             animation: slideIn 0.5s ease;
         }
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .marquee {
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.8);
             color: white;
-            padding: 12px;
+            padding: 15px;
             font-style: italic;
-            font-size: 1em;
-            margin: 15px 0;
-            border-radius: 8px;
+            font-size: 1.1em;
+            margin: 20px 0;
+            border-radius: 10px;
         }
         footer {
             background: rgba(0,0,0,0.9);
             color: white;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
-            margin-top: 25px;
+            margin-top: 40px;
         }
         .status-sam { color: #dc2626; background: rgba(220,38,38,0.1); }
         .status-mam, .status-overweight { color: #ea580c; background: rgba(234,88,12,0.1); }
@@ -141,38 +125,40 @@
 </head>
 <body>
     <div class="container">
-        <img src="prediction2.gif" class="header-img" alt="Prediction Banner">
+        <center><img src="prediction2.gif" class="header-img" alt="Prediction Banner"></center>
         
-        <table class="content-table">
+        <table style="width:100%">
             <tr>
-                <td class="logo-cell">
-                    <img src="LOGO1.jpg" class="logo" alt="Organization Logo">
+                <td style="width:50%; vertical-align:top;">
+                    <center><img src="LOGO1.jpg" class="logo" alt="Organization Logo"></center>
                 </td>
-                <td class="form-cell">
-                    <h1 class="form-title">Predict Child Malnutrition Status<br><small>(Children 0-59 Months Age)</small></h1>
-                    <p class="form-note">(Enter 0 for Age if child is less than 1 month)</p>
-                    
-                    <form id="predictionForm" class="form-container">
-                        <div class="form-group">
-                            <label>Age of Child (months)</label>
-                            <input type="number" id="age" step="0.1" min="0" placeholder="e.g., 12.5">
-                        </div>
-                        <div class="form-group">
-                            <label>Sex (Male=1, Female=2)</label>
-                            <input type="number" id="sex" min="1" max="2" placeholder="1 or 2">
-                        </div>
-                        <div class="form-group">
-                            <label>Height (cm)</label>
-                            <input type="number" id="height" step="0.1" placeholder="e.g., 85.5">
-                        </div>
-                        <div class="form-group">
-                            <label>Weight (kg)</label>
-                            <input type="number" id="weight" step="0.1" placeholder="e.g., 12.3">
-                        </div>
-                        <button type="submit" class="predict-btn">🔍 Predict Nutrition Status</button>
-                    </form>
-                    
-                    <div id="results" style="display:none;"></div>
+                <td style="width:50%; vertical-align:middle;">
+                    <div class="form-section">
+                        <h1 class="form-title">Enter Child Details</h1>
+                        <h2 class="form-note">(Enter 0 for Age if child is less than 1 month)</h2>
+                        
+                        <form id="predictionForm" class="form-container">
+                            <div class="form-group">
+                                <label>Age of Child (months)</label>
+                                <input type="number" id="age" step="0.1" min="0" placeholder="e.g., 12.5">
+                            </div>
+                            <div class="form-group">
+                                <label>Sex (Male=1, Female=2)</label>
+                                <input type="number" id="sex" min="1" max="2" placeholder="1 or 2">
+                            </div>
+                            <div class="form-group">
+                                <label>Height (cm)</label>
+                                <input type="number" id="height" step="0.1" placeholder="e.g., 85.5">
+                            </div>
+                            <div class="form-group">
+                                <label>Weight (kg)</label>
+                                <input type="number" id="weight" step="0.1" placeholder="e.g., 12.3">
+                            </div>
+                            <button type="submit" class="predict-btn">🔍 Predict Nutrition Status</button>
+                        </form>
+                        
+                        <div id="results" style="display:none;"></div>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -183,19 +169,19 @@
     </div>
 
     <footer>
-        <h3 style="font-size:1.1em; margin-bottom:15px;">
+        <h2 style="font-size:1.2em; margin-bottom:20px;">
             Refer: <a href="https://www.who.int/tools/child-growth-standards/standards/weight-for-length-height" 
                      style="color:#60a5fa;">WHO Child Growth Charts</a> | 
             <a href="https://www.fantaproject.org/sites/default/files/download/Calculate-WHZ-2.6-NACS-Users-Guide-Apr2016.pdf" 
                style="color:#60a5fa;">Weight-for-Height Z-Score Chart</a>
-        </h3>
+        </h2>
         <p>Developed by Narayan Rao Sameni</p>
     </footer>
 
-    <!-- Same JavaScript as before - unchanged -->
     <script>
         document.getElementById('predictionForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const age = parseFloat(document.getElementById('age').value) || 0;
             const sex = parseInt(document.getElementById('sex').value) || 0;
             const height = parseFloat(document.getElementById('height').value) || 0;
@@ -206,23 +192,31 @@
                 return;
             }
             
+            // WHO Weight-for-Height Z-Score calculation (simplified)
+            // Replace with your exact formula/reference tables
             const medianWeight = getMedianWeightForHeight(height);
             const whz = (weight - medianWeight) / getStandardDeviation(height);
             const status = getNutritionStatus(whz);
+            
             showResult(status, whz);
         });
 
         function getMedianWeightForHeight(height) {
+            // Simplified WHO median weight-for-height (0-5 years)
+            // Replace with actual WHO lookup table values
             if (height < 50) return 2.5;
             if (height < 60) return 3.8;
             if (height < 70) return 5.5;
             if (height < 80) return 7.5;
             if (height < 90) return 9.8;
             if (height < 100) return 12.5;
-            return 15.0;
+            return 15.0; // Placeholder
         }
 
-        function getStandardDeviation(height) { return 1.2; }
+        function getStandardDeviation(height) {
+            // Simplified SD values - replace with WHO table
+            return 1.2;
+        }
 
         function getNutritionStatus(whz) {
             if (whz < -3) return {code: 1, name: 'Severe Acute Malnutrition (SAM)', range: '< -3'};
@@ -234,12 +228,16 @@
 
         function showResult(status, whz) {
             const resultsDiv = document.getElementById('results');
-            const colors = {1: 'status-sam', 2: 'status-mam', 3: 'status-normal', 4: 'status-overweight', 5: 'status-obesity'};
+            const colors = {
+                1: 'status-sam', 2: 'status-mam', 3: 'status-normal', 
+                4: 'status-overweight', 5: 'status-obesity'
+            };
+            
             resultsDiv.innerHTML = `
                 <div class="results ${colors[status.code]}">
-                    <h1 style="font-size:2.2em;">${status.name}</h1>
-                    <h2 style="font-size:1.3em;">Z-Score: ${whz.toFixed(2)} ${status.range}</h2>
-                    <img src="${status.code <= 3 ? 'happy.gif' : 'unhappy.gif'}" style="max-height:120px;">
+                    <h1 style="font-size:3em; margin-bottom:10px;">${status.name}</h1>
+                    <h2 style="font-size:1.5em; margin-bottom:20px;">Z-Score: ${whz.toFixed(2)} ${status.range}</h2>
+                    <img src="${status.code <= 3 ? 'happy.gif' : 'unhappy.gif'}" style="max-height:150px;">
                 </div>
             `;
             resultsDiv.style.display = 'block';
