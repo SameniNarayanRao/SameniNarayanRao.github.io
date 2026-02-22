@@ -278,10 +278,10 @@
         function getStandardDeviation(height) { return 1.2; }
 
         function getNutritionStatus(whz) {
-            if (whz < -3) return {code: 1, name: 'Severe Acute Malnutrition (SAM)', range: '< -3'};
-            if (whz >= -3 && whz < -2) return {code: 2, name: 'Moderate Acute Malnutrition (MAM)', range: '≥ -3 to < -2'};
-            if (whz >= -2 && whz <= 2) return {code: 3, name: 'Normal', range: '≥ -2 to ≤ +2'};
-            if (whz > 2 && whz <= 3) return {code: 4, name: 'Overweight', range: '> +2 to ≤ +3'};
+            if (whz < -3) return {code: 1, name: 'Severe Acute Malnutrition (SAM)', range: '< -3'}; 'Seek immediate medical attention'
+            if (whz >= -3 && whz < -2) return {code: 2, name: 'Moderate Acute Malnutrition (MAM)', range: '≥ -3 to < -2'}; 'Consult a doctor to create a weight gain plan'
+            if (whz >= -2 && whz <= 2) return {code: 3, name: 'Normal', range: '≥ -2 to ≤ +2'}; 'Maintain balanced diet'
+            if (whz > 2 && whz <= 3) return {code: 4, name: 'Overweight', range: '> +2 to ≤ +3'}; 'Consult a doctor to check for metabolic markers'
             return {code: 5, name: 'Obesity', range: '> +3'};
         }
 
@@ -303,6 +303,7 @@
     </script>
 </body>
 </html>
+
 
 
 
