@@ -1,62 +1,65 @@
-<!DOCTYPE html>
+<!-- Replace your <form> section with this -->
+<form id="predictionForm" onsubmit="predictMalnutrition(event)">
+    Age of the Child (in month): <input type="number" id="a" placeholder="enter a value" step="0.1"/><br><br>
+    Sex of the Child (m=1/f=2): <input type="number" id="b" placeholder="enter a value" min="1" max="2"/><br><br>                      
+    Height of the Child (in cm): <input type="number" id="c" placeholder="enter a value" step="0.1"/><br><br>
+    Weight of the Child (in kg): <input type="number" id="d" placeholder="enter a value" step="0.1"/><br><br>
+    <button type="submit" class="btn btn-primary">Predict</button>
+</form>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Child Malnutrition Prediction</title>
-</head>
-<body bgcolor=#F0F8FF>
+<!-- Add this script before </body> -->
+<script>
+function predictMalnutrition(event) {
+    event.preventDefault(); // Stop form submission
+    
+    const age = parseFloat(document.getElementById('a').value) || 0;
+    const sex = parseInt(document.getElementById('b').value) || 0;
+    const height = parseFloat(document.getElementById('c').value) || 0;
+    const weight = parseFloat(document.getElementById('d').value) || 0;
+    
+    if (!height || !weight) {
+        alert('Please enter height and weight');
+        return;
+    }
+    
+    // Simplified WHZ calculation (replace with your actual formula)
+    const whz = calculateWHZ(weight, height, age, sex);
+    const result = getNutritionStatus(whz);
+    
+    // Show result in same page (or create results div)
+    showResult(result, whz);
+}
 
-<center><img src="prediction2.gif" align="middle"></center>
+function calculateWHZ(weight, height, age, sex) {
+    // Your WHO Z-score formula here - placeholder calculation
+    const medianWeight = height * 0.3; // Simplified - use WHO tables
+    return (weight - medianWeight) / 2; // Dummy formula
+}
 
-<table style="width:80%">
-    <tr>
-        <td>
-            <center>
-           <img src="LOGO1.jpg" align="middle" width="500" height="280">
-        </center>
-        </td>
-    <td>
-        <center>
+function getNutritionStatus(whz) {
+    if (whz < -3) return 1;      // SAM
+    if (whz >= -3 && whz < -2) return 2; // MAM
+    if (whz >= -2 && whz <= 2) return 3;  // Normal
+    if (whz > 2 && whz <= 3) return 4;    // Overweight
+    return 5; // Obesity
+}
 
-        <h1 style="font-family:verdana;font-size:150%;color:Blue;">Enter Value : </h1><br>
-         <h1 style="font-family:verdana;font-size:55%;color:Black;">(Please enter the value as 0, if Age of the Child is less than one month) </h1><br>
-
-    <form method="POST" action="result.html">
-        <b>
-            Age of the Child (in month): <input type="text", name="a", placeholder="enter a value"/><br><br>
-            Sex of the Child (m=1/f=2 ): <input type="text", name="b", placeholder="enter a value"/><br><br>                      
-            Height of the Child (in cm): <input type="text", name="c", placeholder="enter a value"/><br><br>
-            Weight of the Child (in kg): <input type="text", name="d", placeholder="enter a value"/><br><br>
-            
-            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-            </center>
-        </td>
-
-</tr>
-    </table>
-<br />
-<br />
-    <marquee><i> India contributes a third of the global burden of undernutrition, India accounts for more than 3 out of every 10 Stunted children in the world. India accounts for 25.5 Million children out of the 50.5 million children who are Wasted globally.
-</i></marquee>
-
-<br />
-<br />
-<br />
- <footer>
- <center>
-<i><h1 style="Serif:Garamond;font-size:80%;color:Black;">Please refer <a href="https://www.who.int/tools/child-growth-standards/standards/weight-for-length-height"> WHO - Child Growth Monitoring Charts/Tables </a>
-,  <a href="https://www.fantaproject.org/sites/default/files/download/Calculate-WHZ-2.6-NACS-Users-Guide-Apr2016.pdf"> Weight for Height Z-Score Chart (Children 0 to 59 Months Age) </a><i>
-<br />
-<br />
-Developed by Narayan Rao Sameni
-</footer>
- 
- 
-</body>
-
-</html>
-
-
-
+function showResult(data, whz) {
+    const resultDiv = document.createElement('div');
+    resultDiv.style.cssText = 'font-family:verdana;text-align:center;margin:20px;padding:20px;background:#ADD8E6;';
+    
+    let message = '';
+    let color = '';
+    switch(data) {
+        case 1: message = 'Severe Acute Malnutrition (SAM)<br>Z Score: < -3'; color = 'red'; break;
+        case 2: message = 'Moderate Acute Malnutrition (MAM)<br>Z Score: >= -3 to < -2'; color = 'orange'; break;
+        case 3: message = 'Normal<br>Z Score: >= -2 to <= +2'; color = 'green'; break;
+        case 4: message = 'Overweight<br>Z Score: > +2 to <= +3'; color = 'orange'; break;
+        case 5: message = 'Obesity<br>Z Score: > +3'; color = 'red'; break;
+        default: message = 'Refer WHO Weight-for-Height Z-Score Chart';
+    }
+    
+    resultDiv.innerHTML = `<h1 style="color:${color};font-size:250%;">${message}</h1>`;
+    document.body.appendChild(resultDiv);
+}
+</script>
